@@ -18,28 +18,28 @@ public class JsonUtils {
                 JSONObject sandwichObject = new JSONObject(json);
 
                 // Parse Name fields
-                JSONObject sandwichNameObject = sandwichObject.getJSONObject("name");
-                String mainName = sandwichNameObject.getString("mainName");
+                JSONObject sandwichNameObject = sandwichObject.optJSONObject("name");
+                String mainName = sandwichNameObject.optString("mainName");
                 sandwich.setMainName(mainName);
-                JSONArray sandwichNameArray = sandwichNameObject.getJSONArray("alsoKnownAs");
+                JSONArray sandwichNameArray = sandwichNameObject.optJSONArray("alsoKnownAs");
                 List<String> commonNames = new ArrayList<>();
                 parseJSONArray(sandwichNameArray, commonNames);
                 sandwich.setAlsoKnownAs(commonNames);
 
                 // Parse Place of Origin field
-                String placeOfOrigin = sandwichObject.getString("placeOfOrigin");
+                String placeOfOrigin = sandwichObject.optString("placeOfOrigin");
                 sandwich.setPlaceOfOrigin(placeOfOrigin);
 
                 // Parse Description field
-                String description = sandwichObject.getString("description");
+                String description = sandwichObject.optString("description");
                 sandwich.setDescription(description);
 
                 // Parse Image Field
-                String image = sandwichObject.getString("image");
+                String image = sandwichObject.optString("image");
                 sandwich.setImage(image);
 
                 // Parse Ingredients field
-                JSONArray ingredientsJSONArray = sandwichObject.getJSONArray("ingredients");
+                JSONArray ingredientsJSONArray = sandwichObject.optJSONArray("ingredients");
                 List<String> ingredients = new ArrayList<>();
                 parseJSONArray(ingredientsJSONArray, ingredients);
                 sandwich.setIngredients(ingredients);
@@ -52,9 +52,9 @@ public class JsonUtils {
         return null;
     }
 
-    private static void parseJSONArray(JSONArray jsonArray, List<String> list) throws JSONException {
+    private static void parseJSONArray(JSONArray jsonArray, List<String> list) {
         for (int i = 0; i < jsonArray.length(); i++) {
-            list.add(jsonArray.getString(i));
+            list.add(jsonArray.optString(i));
         }
     }
 }
