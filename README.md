@@ -9,7 +9,7 @@ The main focus of this project was to test JSON parsing and layout design.
 ## ScreenShots
 
 ### Phone
-![](app\src\main\res\drawable\phone_list_screenshot.png) ![](app\src\main\res\drawable\phone_details_screenshot.png)
+![](app/src/main/res/drawable/phone_list_screenshot.png) ![](app/src/main/res/drawable/phone_details_screenshot.png)
 
 ### Tablet
-![](app\src\main\res\drawable\tablet_screenshot.png)
+![](app/src/main/res/drawable/tablet_screenshot.png)
